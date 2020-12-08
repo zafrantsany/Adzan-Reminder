@@ -1,0 +1,35 @@
+.navbar-reminder {
+    padding-top: 20px;
+
+    @include media-breakboint-down(md) {
+        background-color: #fff !important;
+    }
+    
+
+    .nav-item {
+        .nav-link {
+            @include media-breakpoint-up(lg) {
+                margin-left: 20px;
+                margin-right: 20px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+               
+            }
+        }
+        .nav-icon {
+            float: left;
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+
+    .title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+    }
+
+   
+
+
+}
