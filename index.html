@@ -13,6 +13,7 @@
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="style/main.css" rel="stylesheet" />
+    <link href="style/toggle.css" rel="stylesheet" >
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   </head>
 
@@ -33,56 +34,34 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
 
-            <li class="dropdown">
-              <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
-              <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
-                 <li>
-                    <div class="row">
-                       <div class="col-md-12">
-                          <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                            
-                             <div class="form-group">
-                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                             </div>
-                             <div class="form-group">
-                                <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                             </div>
-                             <div class="checkbox">
-                                <label>
-                                <input type="checkbox"> Remember me
-                                </label>
-                             </div>
-                             <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-block">Sign in</button>
-                             </div>
-                          </form>
-                       </div>
+           
+              <li class="dropdown">
+                <a href="http://www.jquery2dotnet.com" class="nav-link dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
+                <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                   
+                   <li>
+                    <div class="flex">
+                      <a id="switch_on" class="selected">ON</a>
+                      <a id="switch_off" class="not_selected">OFF</a>
                     </div>
-                 </li>
-                 <li class="divider"></li>
-                 <li>
-                    <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
-                    <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
-                 </li>
-              </ul>
-           </li>
+                    <h4 class="status">Status : <span id="state">on</span></h4>
+                    <input class="btn btn-warning btn-block" type="button" id="settings" value="Pengaturan">
+                    <input class="btn btn-warning btn-block" type="button" id="about" value="About App">
+                   </li>
+                   <li class="divider"></li>
 
-            <li class="nav-item">
-              <div class="dropdown">
-                <a href="#" class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" >
-                  MENU
-                </a>
+                </ul>
+              
+             </li>
+           
 
-                
-            </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <img src="/images/maps-icon.svg" alt="maps" class="d-inline-block" width="15" height="15">
                 JAKARTA TIMUR, INDONESIA
               </a>
             </li>
+
           </ul>
         </div>
       </div>
@@ -172,6 +151,7 @@
     <script src="/vendor/clock.js"></script>
     <script src="/vendor/date.js"></script>
     <script src="/vendor/adzan-schedule.js"></script>
+    <script src="/script/toggle.js"></script>
     <script>
       AOS.init();
     </script>
