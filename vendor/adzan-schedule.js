@@ -545,14 +545,15 @@ function PrayTimes(method) {
     }
   };
   /*----------------------html------------------*/
-  let time = [];
+  let  time = [];
   let date = new Date();
   //tz = time zone
-  tz = date
+  let tz = date
     .toTimeString()
     .split(" ")[1]
     .split("+")[1];
-  //console.log(date)
+  
+  
   // instantiate prayerTime
   var prayTimes = new PrayTimes();
   /*set default method to ISNA = Islamic Society of North America
@@ -566,16 +567,16 @@ function PrayTimes(method) {
         lat = pos.coords.latitude;
         lng = pos.coords.longitude;
         //console.log(lat, lng);
-        pTime = prayTimes.getTimes(new Date(), [lat, lng], tz / 100);
+        let pTime = prayTimes.getTimes(new Date(), [lat, lng], tz / 100);
   
-        for (i in pTime) {
+        for (let i in pTime) {
           time.push(pTime[i]);
         }
   
         let name = Object.keys(pTime);
         name = name.splice(1, 7);
         time = time.splice(1, 7);
-        // console.log(time)
+        
   
         let item = [];
   
@@ -585,26 +586,187 @@ function PrayTimes(method) {
         var maghrib = time[5];
         var isyaa = time[6];
 
+        console.log(time);
+
+
         document.getElementById("shubuh").innerHTML = shubuh;
         document.getElementById("dzhuhur").innerHTML = dzhuhur;
         document.getElementById("ashar").innerHTML = ashar;
         document.getElementById("maghrib").innerHTML = maghrib;
         document.getElementById("isyaa").innerHTML = isyaa;
 
+        var currentTime = new Date()
+        var hours = currentTime.getHours();
+        var minutes = (currentTime.getMinutes() < 10? '0' : '') + currentTime.getMinutes();
+        var nowTime = hours + ":" + minutes ;
 
+        console.log(nowTime);
+
+        this.currentTime = nowTime;
+        for(var i = 0; i < time.length; i++) {
+          if(time[i] == nowTime){
+             // adding mp3 backgrouns sound to alarm	 
+             $(".container").find('audio').attr("src","https://audio.jukehost.co.uk/OLGrTGFfl8oKp4xW9YZt2JdKj3Wi7H4J");
+            
+             $("body").addClass("body");
+             
+             $(".digits").addClass("animated shake infinite ");
+ 
+            console.log("Waktu Adzan Telah Tiba!!!");
+            break;
+          }
+        }
       });
-
-
-
-
-
     } else {
       console.log("your browser doesnt support geolocation");
     }
+    
   }
   
   init();
   
   function callme(){
     return 'test';
+  }
+
+  // Testing Alarm
+
+  $(function(){
+	
+    var timer = {
+    
+        hours : "",
+        minutes : "",
+        seconds : "",
+        
+        
+        getNewTime : function(){
+            
+          var date = new Date(); 
+                
+            this.hours	= date.getHours();
+            this.minutes  = date.getMinutes();
+            this.seconds  = date.getSeconds();
+             
+                // Format hours, minutes and seconds
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+             
+            $(".digits span.hours").html(hours + ":");
+            $(".digits span.minutes").html(minutes + ":");
+            $(".digits span.seconds").html(seconds);
+        
+            
+        },
+        
+    
+        setUserTime : function(){
+    
+            // create Hours
+            for(var i=0; i<=24; i++){
+                
+                if (i < 10) {i = "0" + i; }
+        
+                $("select.hours").append("<option value='"+i+"'>"+i+"</option>");
+                
+            }
+            
+            // create minutes
+            for(var i=0; i<=60; i++){
+                
+                if (i < 10) {i = "0" + i; }
+                
+                $("select.minutes").append("<option value='"+i+"'>"+i+"</option>");
+                
+            }
+            
+           // create seconds
+            for(var sec=0; sec<=60; sec++){
+                
+                if (sec < 10) {sec = "0" + sec; }
+                
+                $("select.seconds").append("<option value='"+sec+"'>"+sec+"</option>");
+                
+            }
+        },
+        
+        getUserTime : function(){
+            
+            var userHours = $("select.hours").val(); 
+            
+            var userMinutes = $("select.minutes").val(); 
+            
+            var userSeconds = $("select.seconds").val(); 
+        
+            // set chosen value on option html
+            (userHours != null) ? $("select.hours").find("option:disabled").html(userHours): "";
+            
+            (userMinutes != null) ? $("select.minutes").find("option:disabled").html(userMinutes): "";
+            
+            (userSeconds != null) ? $("select.seconds").find("option:disabled").html(userSeconds): "";
+
+        // Alarm function
+            
+            if( this.hours == userHours &&  this.minutes == userMinutes && this.seconds == userSeconds){
+          
+        // adding mp3 backgrouns sound to alarm	 
+          $(".container").find('audio').attr("src","https://audio.jukehost.co.uk/OLGrTGFfl8oKp4xW9YZt2JdKj3Wi7H4J");
+          
+                $("body").addClass("body");
+                
+                $(".digits").addClass("animated shake infinite ");
+    
+                
+            }else{
+                
+            //	console.log("time is not in yet");
+                
+            }
+            
+        },
+        
+        
+        reloadPage : function(){
+            
+            $(".submit").on("click", function(){
+            
+                $("body").removeClass("body");
+                
+                $(".digits").removeClass("animated shake infinite ");
+                        $(".container").find('audio').attr("src","");
+            });
+        },
+        
+        
+        styleInput : function(){
+            $( ":input" ).css({
+                border:"1px solid #2C3E50",
+                padding:"3px 8px",
+                "border-radius": "5px",
+            });
+        }
+       
     }
+        
+    
+  
+      timer.styleInput();   
+      timer.reloadPage();
+      timer.setUserTime();
+        
+        // active real time output
+      setInterval( timer.getNewTime, 1000 );
+        
+      setInterval( timer.getUserTime, 1000 );
+        
+    }
+); 
+
+  

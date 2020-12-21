@@ -1,0 +1,40 @@
+
+.tulisan {
+    text-align: justify;
+    padding: 10px;
+}
+
+.about-title {
+    position: relative;
+    align-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 21px;
+    display: inline-flex;
+    margin: 0px auto 0px auto;
+    background-color: #FFD600;
+    color: #443D3D;
+    margin-top: 200px;
+    margin-bottom: 20px;
+
+}
+
+.about-tulisan {
+    position: relative;
+    align-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #ffffff;
+    font-size: 80px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    background-color: #3b3737;
+    padding: 18px;
+    border-radius: 10px;
+    box-sizing: content-box;
+
+}

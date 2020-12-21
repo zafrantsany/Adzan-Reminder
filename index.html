@@ -14,6 +14,8 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="style/main.css" rel="stylesheet" />
     <link href="style/toggle.css" rel="stylesheet" >
+    <link href="style/alarm.css" rel="stylesheet" >
+    <link href="style/popup.css" rel="stylesheet">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   </head>
 
@@ -45,8 +47,8 @@
                       <a id="switch_off" class="not_selected">OFF</a>
                     </div>
                     <h4 class="status">Status : <span id="state">on</span></h4>
-                    <input class="btn btn-warning btn-block" type="button" id="settings" value="Pengaturan">
-                    <input class="btn btn-warning btn-block" type="button" id="about" value="About App">
+                    <a href="/settings.html" class="btn btn-warning btn-block" role="button">Pengaturan</a>
+                    <a href="/about.html" class="btn btn-warning btn-block" role="button">About</a>
                    </li>
                    <li class="divider"></li>
 
@@ -122,11 +124,64 @@
           </div>
           <div class="jadwal-sholat" data-aos="fade-up" data-aos-delay="600" id="isyaa"></div>
         </div>
-        
       </div>
     </div>
 
+    <br>
+    <br>
+    <br>
+
+    <div class="box">
+      <a class="button" href="#popup1">Let me Pop up</a>
     </div>
+
+    <div id="popup1" class="overlay">
+      <div class="popup">
+        <h2>Adzan Reminder</h2>
+        <div class="content text-center">
+         Waktu sholat telah tiba..
+        </div>
+        <div class="text-center">
+          <a class="tutup btn btn-warning submit" href="#">Tutup</a>
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="container">
+      <audio controls autoplay style="opacity:0">
+         <source src="" type="audio/mp3">
+          Audio element not supported by your browser. 
+      </audio>
+        
+         <div class="clockHolder">
+          <h4>Testing Clock</h4>
+          <div class="digits">
+            <span class="hours"></span>
+            <span class="minutes"></span>
+            <span class="seconds"></span>
+          </div>
+        
+          <select class="hours">
+             <option value="" disabled selected>Jam</option>
+          </select>
+          <select class="minutes">
+            <option value="" disabled selected>Menit</option>
+          </select>
+          <select class="seconds">
+            <option value="" disabled selected>Detik</option>
+          </select>
+          <button type="reset" value="submit" name="submit" class="submit">reset</button>
+          
+        </div>
+      </div>
+    </div>
+
+    <div id="wrapper">
+      <button id="notify-button">Notify Me!</button>
+    </div>
+
+    
 
     <footer>
       <div class="container">
@@ -142,8 +197,7 @@
 
     
 
-    
-
+  
     <!-- Bootstrap core JavaScript -->
     <script src="/vendor/jquery/jquery.slim.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -152,11 +206,18 @@
     <script src="/vendor/date.js"></script>
     <script src="/vendor/adzan-schedule.js"></script>
     <script src="/script/toggle.js"></script>
+    <script src="/script/alarm.js"></script>
+    <script src="/script/push.js"></script>
     <script>
       AOS.init();
     </script>
     <script src="/script/navbar-scroll.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script>
+      $("#notify-button").click(function(){
+        Push.create("Hello-World!!");
+      });
+    </script>
 
 
   </body>

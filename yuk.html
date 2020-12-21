@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+    <main>
+        <div class="oval"></div>
+        <div class="curtain {locationDropdownActive || themeDropdownActive ? "is-active" : ""}" on:click={hideAllDropdown}></div>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="">
+                        <img src="themes/modern/images/logo.svg" alt="Yuk Sholat!">
+                        <h1>Yuk Sholat!</h1>
+                    </a>
+                </div>
+                <div class="navbar-setting">
+                    <div class="dropdown is-right {themeDropdownActive ? "is-active" : ""}">
+                        <div class="dropdown-trigger">
+                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" on:click={toggleThemeDropdown}>
+                                <span class="icon is-small">
+                                    <i class="fas fa-palette"></i>
+                                </span>
+                                <span>Tema</span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div class="dropdown-content is-paddingless">
+                                <h4 style="margin-top:5px;">Ingin kembali ke tema yang lama?</h4>
+                                <div class="button-wrap" style="justify-content:center; margin-top:5px;">
+                                    <button class="button is-primary is-center" on:click={() => changeTheme("classic")}>Klik disini</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown is-right {locationDropdownActive ? "is-active" : ""}">
+                        <div class="dropdown-trigger">
+                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" on:click={toggleLocationDropdown}>
+                                <img src="/themes/modern/images/pin.svg" alt="open dropdown">
+                                <span>{$data.city}</span>
+                                <span class="icon is-small">
+                                    {#if locationDropdownActive}
+                                        <i class="fas fa-angle-up" aria-hidden="true"></i>
+                                    {:else}
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    {/if}
+                                </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div class="dropdown-content">
+                                <figure class="image is-128x128">
+                                    <img src="/themes/modern/images/pinmap.svg" align="center">
+                                </figure>
+                                <h4>Astagfirullah, lokasi tidak sesuai?</h4>
+                                <p>Jangan kawatir, Alhamdulillah kamu bisa mencari lokasi manual dengan input kota dibawah ini.</p>
+                                <input type="text" placeholder="Masukkan lokasi kamu" bind:value={inputQuery} on:keydown={handleQueryKeydown}>
+                                <div class="button-wrap">
+                                    <button class="button is-primary is-outlined" on:click={handleLocate}>
+                                        <span class="icon is-small">
+                                            <i class="fas fa-map"></i>
+                                        </span>
+                                        <span>Lokasi saya</span>
+                                    </button>
+                                    <button class="button is-info is-outlined" on:click={search}>
+                                        <span class="icon is-small">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                        <span>Cari lokasi</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </nav>
+        
+        <section class="section top-section">
+            <div class="container">
+                <div class="now">
+                    <div class="time">{now}</div>
+                    <div class="date"><strong>{$data.hijrCalendar} {$data.hijrYear}</strong> / {moment().format("DD MMMM YYYY")}</div>
+                </div>
+                <div class="quote">
+                    <p>“Apakah yang memasukkan kamu ke dalam <strong>Saqar (neraka)?</strong>” <br>
+                    Mereka menjawab: “Kami dahulu <strong>tidak</strong> termasuk orang-orang yang <strong>mengerjakan shalat.</strong>”<br>
+                    <br>
+                    Al Muddaththir,42-43
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="section content">
+            <div class="container">
+                {#if prayer}
+                    <div class="tile is-ancestor">
+                        <div class="tile is-vertical is-12">
+                            <div class="tile">
+                                <div class="tile is-parent is-6">
+                                    <article class="tile is-child notification is-info {prayer[0].name} active is-paddingless">
+                                        <figure class="image is-marginless">
+                                            <img src="themes/modern/images/{prayer[0].name}.svg">
+                                        </figure>
+                                        <span class="pray-text">{prayer[0].name}</span>
+                                        <span class="pray-time">{prayer[0].value}</span>
+                                    </article>
+                                </div>
+                                <div class="tile is-parent is-vertical">
+                                    <article class="tile is-child notification is-info {prayer[1].name} is-paddingless">
+                                        <figure class="image is-marginless">
+                                            <img src="themes/modern/images/{prayer[1].name}.svg">
+                                        </figure>
+                                        <span class="pray-text">{prayer[1].name}</span>
+                                        <span class="pray-time">{prayer[1].value}</span>
+                                    </article>
+                                    <article class="tile is-child notification is-info {prayer[2].name} is-paddingless">
+                                        <figure class="image is-marginless">
+                                            <img src="themes/modern/images/{prayer[2].name}.svg">
+                                        </figure>
+                                        <span class="pray-text">{prayer[2].name}</span>
+                                        <span class="pray-time">{prayer[2].value}</span>
+                                    </article>
+                                </div>
+                                <div class="tile is-parent is-vertical">
+                                    <article class="tile is-child notification is-info {prayer[3].name} is-paddingless">
+                                        <figure class="image is-marginless">
+                                            <img src="themes/modern/images/{prayer[3].name}.svg">
+                                        </figure>
+                                        <span class="pray-text">{prayer[3].name}</span>
+                                        <span class="pray-time">{prayer[3].value}</span>
+                                    </article>
+                                    <article class="tile is-child notification is-info {prayer[4].name} is-paddingless">
+                                        <figure class="image is-marginless">
+                                            <img src="themes/modern/images/{prayer[4].name}.svg">
+                                        </figure>
+                                        <span class="pray-text">{prayer[4].name}</span>
+                                        <span class="pray-time">{prayer[4].value}</span>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tile -->
+                {/if}
+            </div>
+        </section>
+        </main>
+        
+    
+</body>
+</html>
