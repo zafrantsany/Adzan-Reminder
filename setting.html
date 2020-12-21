@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Adzan Reminder - Best Reminder Extension</title>
+    <title>test git</title>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="style/main.css" rel="stylesheet" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-reminder fixed-top navbar-fixed-top" data-aos="fade-down" data-aos-delay="100">
+
+      <div class="container">
+        <div class="title">
+          <a href="/index.html" class="navbar-title">
+            WAKTUSHOLAT.ID
+          </a>
+        </div>
+  
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="dropdown">
+              <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
+              <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                 <li>
+                    <div class="row">
+                       <div class="col-md-12">
+                          <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                            
+                             <div class="form-group">
+                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                             </div>
+                             <div class="form-group">
+                                <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                             </div>
+                             <div class="checkbox">
+                                <label>
+                                <input type="checkbox"> Remember me
+                                </label>
+                             </div>
+                             <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                             </div>
+                          </form>
+                       </div>
+                    </div>
+                 </li>
+                 <li class="divider"></li>
+                 <li>
+                    <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
+                    <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
+                 </li>
+              </ul>
+           </li>
+
+            <li class="nav-item">
+              <div class="dropdown">
+                <a href="#" class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" >
+                  MENU
+                </a>
+
+                
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <img src="/images/maps-icon.svg" alt="maps" class="d-inline-block" width="15" height="15">
+                JAKARTA SELATAN, INDONESIA
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="page-home"> 
+      <div class="container" data-aos="fade-down" data-aos-delay="150">
+        <div class="row">
+          <div class="col"></div>
+          <div class="col-6" >
+            <div class="clock" id="MyClockDisplay" onLoad="showTime()"></div>
+          </div>
+          <div class="col"></div>
+        </div>
+    </div>
+
+    <div class="text-center">
+      <div class="hello" data-aos="fade" data-aos-delay="700">
+        <h5>Hallo <span style="color: #FFD600" data-aos="fade-up" data-aos-delay="1000">Zafran</span>, sudah sholat Isyaa hari ini?</h5>
+      </div>
+      <div class='time' id='time' data-aos="fade" data-aos-delay="100"></div>
+    </div>
+
+
+    <div class="container">
+      <div class="row justify-content-center" data-aos="fade" data-aos-delay="150">
+        <div class="col-12 col-md-4 col-lg-2">
+          <div class="jadwal ">
+            Shubuh Pagi
+          </div>
+          <div class="jadwal-sholat" data-aos="fade-up" data-aos-delay="200" id="shubuh"></div>
+        </div>
+      
+        <div class="col-12 col-md-4 col-lg-2"> 
+          <div class="jadwal">
+            Dzhuhur 
+          </div>
+          <div class="jadwal-sholat" data-aos="fade-up" data-aos-delay="300" id="dzhuhur"></div>
+        </div>
+  
+        <div class="col-12 col-md-4 col-lg-2">  
+          <div class="jadwal">
+            Ashar 
+          </div>
+          <div class="jadwal-sholat" data-aos="fade-up" data-aos-delay="400" id="ashar"></div>
+        </div>
+  
+        <div class="col-12 col-md-4 col-lg-2">  
+          <div class="jadwal">
+            Maghrib
+          </div>
+          <div class="jadwal-sholat" data-aos="fade-up" data-aos-delay="500" id="maghrib"></div>
+        </div>
+  
+        <div class="col-12 col-md-4 col-lg-2">    
+          <div class="jadwal">
+            Isyaa
+          </div>
+          <div class="jadwal-sholat" data-aos="fade-up" data-aos-delay="600" id="isyaa"></div>
+        </div>
+        
+      </div>
+    </div>
+
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <p class="pt-4 pb-2">
+              2020 Copyright. All Right Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+
+    
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.slim.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/vendor/clock.js"></script>
+    <script src="/vendor/date.js"></script>
+    <script src="/vendor/adzan-schedule.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="/script/navbar-scroll.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+  </body>
+</html>
