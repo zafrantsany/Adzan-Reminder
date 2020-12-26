@@ -28,19 +28,19 @@
             WAKTUSHOLAT.ID
           </a>
         </div>
-  
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
 
-           
+
               <li class="dropdown">
                 <a href="http://www.jquery2dotnet.com" class="nav-link dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
                 <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
-                   
+
                    <li>
                     <div class="flex">
                       <a id="switch_on" class="selected">ON</a>
@@ -53,9 +53,9 @@
                    <li class="divider"></li>
 
                 </ul>
-              
+
              </li>
-           
+
 
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -68,8 +68,8 @@
         </div>
       </div>
     </nav>
-    
-    <div class="page-home"> 
+
+    <div class="page-home">
       <div class="container" data-aos="fade-down" data-aos-delay="150">
         <div class="row">
           <div class="col"></div>
@@ -82,7 +82,7 @@
 
     <div class="text-center">
       <div class="hello" data-aos="fade" data-aos-delay="700">
-        <h5>Hallo <span style="color: #FFD600" data-aos="fade-up" data-aos-delay="1000">Zafran</span>, sudah sholat Isyaa hari ini?</h5>
+        <h5>Hallo <span style="color: #FFD600" data-aos="fade-up" data-aos-delay="1000">Zafran</span>, sudah sholat Dzhuhur hari ini?</h5>
       </div>
       <div class='time' id='time' data-aos="fade" data-aos-delay="100"></div>
     </div>
@@ -96,29 +96,29 @@
           </div>
           <div class="jadwal-sholat" data-aos="fade-up" data-aos-delay="200" id="shubuh"></div>
         </div>
-      
-        <div class="col-12 col-md-4 col-lg-2"> 
+
+        <div class="col-12 col-md-4 col-lg-2">
           <div class="jadwal">
-            Dzhuhur 
+            Dzhuhur
           </div>
           <div class="jadwal-sholat" data-aos="fade-up" data-aos-delay="300" id="dzhuhur"></div>
         </div>
-  
-        <div class="col-12 col-md-4 col-lg-2">  
+
+        <div class="col-12 col-md-4 col-lg-2">
           <div class="jadwal">
-            Ashar 
+            Ashar
           </div>
           <div class="jadwal-sholat" data-aos="fade-up" data-aos-delay="400" id="ashar"></div>
         </div>
-  
-        <div class="col-12 col-md-4 col-lg-2">  
+
+        <div class="col-12 col-md-4 col-lg-2">
           <div class="jadwal">
             Maghrib
           </div>
           <div class="jadwal-sholat" data-aos="fade-up" data-aos-delay="500" id="maghrib"></div>
         </div>
-  
-        <div class="col-12 col-md-4 col-lg-2">    
+
+        <div class="col-12 col-md-4 col-lg-2">
           <div class="jadwal">
             Isyaa
           </div>
@@ -147,21 +147,26 @@
       </div>
     </div>
 
-  
+    <!-- <input type="text" onkeyup="search(event)" placeholder="Enter Search Key Here" />
+    <div>
+      <span id="codes"></span>
+    </div> -->
+
+
     <div class="container">
       <audio controls autoplay style="opacity:0">
          <source src="" type="audio/mp3">
-          Audio element not supported by your browser. 
+          Audio element not supported by your browser.
       </audio>
-        
-         <div class="clockHolder">
+
+         <!-- <div class="clockHolder">
           <h4>Testing Clock</h4>
           <div class="digits">
             <span class="hours"></span>
             <span class="minutes"></span>
             <span class="seconds"></span>
           </div>
-        
+
           <select class="hours">
              <option value="" disabled selected>Jam</option>
           </select>
@@ -172,16 +177,16 @@
             <option value="" disabled selected>Detik</option>
           </select>
           <button type="reset" value="submit" name="submit" class="submit">reset</button>
-          
-        </div>
+
+        </div>  -->
       </div>
     </div>
 
-    <div id="wrapper">
+    <!-- <div id="wrapper">
       <button id="notify-button">Notify Me!</button>
-    </div>
+    </div> -->
 
-    
+
 
     <footer>
       <div class="container">
@@ -195,18 +200,18 @@
       </div>
     </footer>
 
-    
 
-  
+
+
     <!-- Bootstrap core JavaScript -->
     <script src="/vendor/jquery/jquery.slim.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="/vendor/clock.js"></script>
     <script src="/vendor/date.js"></script>
+    <script src="/vendor/lokasi.js"></script>
     <script src="/vendor/adzan-schedule.js"></script>
     <script src="/script/toggle.js"></script>
-    <script src="/script/alarm.js"></script>
     <script src="/script/push.js"></script>
     <script>
       AOS.init();
@@ -218,6 +223,8 @@
         Push.create("Hello-World!!");
       });
     </script>
+
+    
 
 
   </body>
