@@ -662,36 +662,40 @@ function PrayTimes(method) {
                     
                 }
             },
+
             
             getUserTime : function(){
-                
-                var userHours = $("select.hours").val(); 
-                
-                var userMinutes = $("select.minutes").val(); 
-                
-                var userSeconds = $("select.seconds").val(); 
-            
-                // set chosen value on option html
-                (userHours != null) ? $("select.hours").find("option:disabled").html(userHours): "";
-                
-                (userMinutes != null) ? $("select.minutes").find("option:disabled").html(userMinutes): "";
-                
-                (userSeconds != null) ? $("select.seconds").find("option:disabled").html(userSeconds): "";
-    
-            // Alarm function
-                
+              
               var currentTime = new Date()
-              var hours = currentTime.getHours();
+              var hours = (currentTime.getHours() < 10? '0' : '') + currentTime.getHours();
               var minutes = (currentTime.getMinutes() < 10? '0' : '') + currentTime.getMinutes();
-              var seconds = currentTime.getSeconds();
+              var seconds = (currentTime.getSeconds() < 10? '0' : '') + currentTime.getSeconds();
               var nowTime = hours + ":" + minutes + ":" + seconds ; // Test disini
     
-              console.log(seconds);
+              console.log(shubuh);
               console.log(nowTime);
-    
+
               this.currentTime = nowTime;
+
+            
+              // Alarm function
               for(var i = 0; i < time.length; i++) {
-                if(shubuh + ':0' == nowTime || dzhuhur + ':0' == nowTime || ashar + ':0' == nowTime || maghrib + ':0' == nowTime || isyaa + ':0' == nowTime || '12:03:55' == nowTime){
+                if(shubuh + ':00' == nowTime  || '12:47:20'== nowTime ){
+                  // adding mp3 backgrouns sound to alarm	 
+                  $(".container").find('audio').attr("src","https://audio.jukehost.co.uk/OLGrTGFfl8oKp4xW9YZt2JdKj3Wi7H4J");
+                  
+                  $("body").addClass("body");
+
+                  let myElement = document.getElementById("popupp").innerHTML;
+                  document.getElementById("demo").innerHTML = myElement;
+                  
+                  $(".digits").addClass("animated shake infinite ");
+    
+                  console.log("Waktu sholat shubuh telah tiba!!!");
+                    
+                  break;
+                  
+                } else if (dzhuhur + ':00' == nowTime) {
                   // adding mp3 backgrouns sound to alarm	 
                   $(".container").find('audio').attr("src","https://audio.jukehost.co.uk/OLGrTGFfl8oKp4xW9YZt2JdKj3Wi7H4J");
                   
@@ -699,11 +703,44 @@ function PrayTimes(method) {
                   
                   $(".digits").addClass("animated shake infinite ");
     
-                    console.log("Waktu sholat shubuh telah tiba!!!");
+                    console.log("Waktu sholat dzhuhur telah tiba!!!");
                     
                   break;
+
+                } else if (ashar + ':00' == nowTime) {
+                  // adding mp3 backgrouns sound to alarm	 
+                  $(".container").find('audio').attr("src","https://audio.jukehost.co.uk/OLGrTGFfl8oKp4xW9YZt2JdKj3Wi7H4J");
                   
-                }
+                  $("body").addClass("body");
+                  
+                  $(".digits").addClass("animated shake infinite ");
+    
+                    console.log("Waktu sholat ashar telah tiba!!!");
+                    
+                  break;
+                } else if (maghrib + ':00' == nowTime) {
+                  // adding mp3 backgrouns sound to alarm	 
+                  $(".container").find('audio').attr("src","https://audio.jukehost.co.uk/OLGrTGFfl8oKp4xW9YZt2JdKj3Wi7H4J");
+                  
+                  $("body").addClass("body");
+                  
+                  $(".digits").addClass("animated shake infinite ");
+    
+                    console.log("Waktu sholat maghrib telah tiba!!!");
+                    
+                  break;
+                } else if (isyaa + ':00' == nowTime) {
+                  // adding mp3 backgrouns sound to alarm	 
+                  $(".container").find('audio').attr("src","https://audio.jukehost.co.uk/OLGrTGFfl8oKp4xW9YZt2JdKj3Wi7H4J");
+                  
+                  $("body").addClass("body");
+                  
+                  $(".digits").addClass("animated shake infinite ");
+    
+                    console.log("Waktu sholat isyaa telah tiba!!!");
+                    
+                  break;
+                } 
               }
                 
             },
@@ -736,11 +773,15 @@ function PrayTimes(method) {
           timer.styleInput();   
           timer.reloadPage();
           timer.setUserTime();
+
+         
             
             // active real time output
           setInterval( timer.getNewTime, 1000 );
             
           setInterval( timer.getUserTime, 1000 );
+
+          
             
         
           
